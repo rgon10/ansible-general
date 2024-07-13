@@ -43,8 +43,6 @@ argument_specs:
         description: Set the area for the NTP pool. See ntp.org's documentation - http://support.ntp.org/bin/view/Servers/NTPPoolServers
       ntp_clients:
         type: list
-        required_if:
-          - [ntp_server_role, option_value, true]
         default: []
         elements: str
         description: List of CIDR subnets or IP addresses to provide NTP services to.

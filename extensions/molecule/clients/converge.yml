@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Test NTP Role
+      ansible.builtin.import_role:
+        name: ntp
+      vars:
+        ntp_clients:
+          - "10.10.10.10"
