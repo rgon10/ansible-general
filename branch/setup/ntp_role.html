@@ -5,7 +5,7 @@
 <meta content="2.12.0" name="antsibull-docs" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rgon10.general.ntp role &mdash; Ansible collections  documentation</title>
+  <title>rgon10.general.ntp role – Install and Configure NTP on Linux &mdash; Ansible collections  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5707b69d" />
       <link rel="stylesheet" type="text/css" href="_static/css/ansible.css?v=c5b67dd2" />
       <link rel="stylesheet" type="text/css" href="_static/antsibull-minimal.css" />
@@ -75,7 +75,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
   
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">rgon10.general.ntp role</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rgon10.general.ntp role – Install and Configure NTP on Linux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#entry-point-main-install-and-configure-ntp-on-linux">Entry point <code class="docutils literal notranslate"><span class="pre">main</span></code> – Install and Configure NTP on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authors">Authors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#collection-links">Collection links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
 
@@ -93,7 +104,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">rgon10.general.ntp role</li>
+      <li class="breadcrumb-item active">rgon10.general.ntp role – Install and Configure NTP on Linux</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -104,21 +115,154 @@
   
            <div itemprop="articleBody">
              
-  <span class="target" id="ansible-collections-rgon10-general-ntp-role"></span><section id="rgon10-general-ntp-role">
-<h1>rgon10.general.ntp role<a class="headerlink" href="#rgon10-general-ntp-role" title="Link to this heading"></a></h1>
-<p>The documentation for the role plugin, rgon10.general.ntp,  was malformed.</p>
-<p>The errors were:</p>
-<ul>
-<li><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 validation errors for RoleSchema
-entry_points -&gt; main -&gt; description
-  field required (type=value_error.missing)
-entry_points -&gt; main -&gt; options -&gt; ntp_tz_package -&gt; description
-  field required (type=value_error.missing)
-</pre></div>
+  <span class="target" id="ansible-collections-rgon10-general-ntp-role"></span><section id="rgon10-general-ntp-role-install-and-configure-ntp-on-linux">
+<h1>rgon10.general.ntp role – Install and Configure NTP on Linux<a class="headerlink" href="#rgon10-general-ntp-role-install-and-configure-ntp-on-linux" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This role is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/rgon10/general/">rgon10.general collection</a> (version 1.0.0).</p>
+<p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
+To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
+<p>To install it use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">rgon10.general</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">rgon10.general.ntp</span></code>.</p>
 </div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#entry-point-main-install-and-configure-ntp-on-linux" id="id1">Entry point <code class="docutils literal notranslate"><span class="pre">main</span></code> – Install and Configure NTP on Linux</a></p>
+<ul>
+<li><p><a class="reference internal" href="#synopsis" id="id2">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id3">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#authors" id="id4">Authors</a></p></li>
+</ul>
 </li>
 </ul>
-<p>File a bug with the <a class="reference external" href="https://github.com/rgon10/ansible-general/issues">rgon10.general collection</a> in order to have it corrected.</p>
+</nav>
+<section id="entry-point-main-install-and-configure-ntp-on-linux">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Entry point <code class="docutils literal notranslate"><span class="pre">main</span></code> – Install and Configure NTP on Linux</a><a class="headerlink" href="#entry-point-main-install-and-configure-ntp-on-linux" title="Link to this heading"></a></h2>
+<p class="ansible-version-added">New in rgon10.general 1.0.0</p>
+<section id="synopsis">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Installs and configures NTP on Linux. At this time, only Debian is supported.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<table class="longtable ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_clients"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-clients"><strong>ntp_clients</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_clients" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of CIDR subnets or IP addresses to provide NTP services to.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_config"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-config"><strong>ntp_config</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Controls if the ntp config is managed by ansible.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">false</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">true</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_config_file"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-config-file"><strong>ntp_config_file</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_config_file" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Path to the configuration file for the ntp package. The default should be sane for your OS.</p>
+<p>Debian: defaults to /etc/ntpsec/ntp.conf on versions &gt;= 12. Defaults to /etc/ntp.conf on version &lt;= 11</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;OS</span> <span class="pre">Dependent&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_drift_file"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-drift-file"><strong>ntp_drift_file</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_drift_file" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Path to the drift file for the ntp package. The default should be sane for your OS.</p>
+<p>Debian: defaults to /var/lib/ntpsec/ntp.drift on versions &gt;= 12. Defaults to /var/lib/ntp/drift on version &lt;= 11</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;OS</span> <span class="pre">Dependent&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_enabled"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-enabled"><strong>ntp_enabled</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_enabled" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Control if the ntp service should be running and enabled for auto start.</p>
+<p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">false</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_package"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-package"><strong>ntp_package</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_package" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the NTP package to install. The default should be sane for your OS.</p>
+<p>Debian: defaults to ntpsec on versions &gt;= 12. Defaults to ntp on versions &lt;= 11.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;OS</span> <span class="pre">Dependent&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_region"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-region"><strong>ntp_region</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_region" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Set the area for the NTP pool. See ntp.org’s documentation - <a class="reference external" href="http://support.ntp.org/bin/view/Servers/NTPPoolServers">http://support.ntp.org/bin/view/Servers/NTPPoolServers</a></p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_servers"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-servers"><strong>ntp_servers</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_servers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Override the default NTP servers.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[&quot;0&lt;.ntp_region&gt;.pool.ntp.org&quot;,</span> <span class="pre">&quot;1&lt;.ntp_region&gt;.pool.ntp.org&quot;,</span> <span class="pre">&quot;2&lt;.ntp_region&gt;.pool.ntp.org&quot;,</span> <span class="pre">&quot;3&lt;.ntp_region&gt;.pool.ntp.org&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_tz"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-tz"><strong>ntp_tz</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_tz" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Configure the timezone for the system</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;Etc/UTC&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-main--ntp_tz_package"></div><p class="ansible-option-title" id="ansible-collections-rgon10-general-ntp-role-parameter-main-ntp-tz-package"><strong>ntp_tz_package</strong></p>
+<a class="ansibleOptionLink" href="#parameter-main--ntp_tz_package" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the NTP package to install. The default should be sane for your OS.</p>
+<p>Debian: defaults to tzdata.</p>
+<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;OS</span> <span class="pre">Dependent&quot;</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="authors">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Authors</a><a class="headerlink" href="#authors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>rgon10</p></li>
+</ul>
+<section id="collection-links">
+<h4>Collection links<a class="headerlink" href="#collection-links" title="Link to this heading"></a></h4>
+<ul class="ansible-links">
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/rgon10/ansible-general/issues" rel="noopener external" target="_blank">Issue Tracker</a></span></li>
+<li><span><a aria-role="button" class="ansible-link reference external" href="https://github.com/rgon10/ansible-general" rel="noopener external" target="_blank">Repository (Sources)</a></span></li>
+</ul>
+</section>
+</section>
+</section>
 </section>
 
 
