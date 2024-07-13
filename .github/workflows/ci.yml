@@ -14,7 +14,7 @@ defaults:
 
 jobs:
   lint:
-    name: Lint
+    name: Ansible Lint
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase
@@ -22,17 +22,8 @@ jobs:
         with:
           path: ".ansible/collections/ansible_collections/rgon10/general"
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install test dependencies
-        run: pip3 install yamllint
-
-      - name: Lint code.
-        run: |
-          yamllint .
+      - name: Run Ansible-Lint
+        uses: ansible/ansible-lint@main
 
   molecule:
     name: Molecule
@@ -60,7 +51,7 @@ jobs:
         run: pip3 install ansible molecule molecule-plugins[docker] docker
 
       - name: Run Molecule tests
-        run: molecule test --scenario-name ci
+        run: molecule test
         env:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"

@@ -8,6 +8,9 @@ warn_list:
   - no-handler
   - no-changed-when
 
+skip_list:
+  - galaxy[no-changelog]
+
 kinds:
   - playbook: ./playbooks/**/*.yml
 # skip_list:
