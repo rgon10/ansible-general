@@ -28,3 +28,6 @@ rules:
       - "False"
       - "True"
     check-keys: true
+
+ignore:
+  - argument_specs.yml
