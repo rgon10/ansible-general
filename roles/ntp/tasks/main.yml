@@ -1,9 +1,13 @@
 ---
+- name: Lowercase OS Family
+  ansible.builtin.set_fact:
+    __os_family: "{{ ansible_facts['os_family'] | lower }}"
+
 - name: Include OS variables
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
-    - "{{ ansible_facts['os_family'] | lower }}-{{ ansible_facts['distribution_major_version'] | lower }}.yml"
-    - "{{ ansible_facts['os_family'] | lower }}.yml"
+    - "{{ __os_family }}-{{ '12+' if ((ansible_facts['distribution_major_version'] | int ) >= 12 ) }}.yml"
+    - "{{ __os_family }}.yml"
 
 # this is from my first role attempt - need to determine if it's still needed
 # - name: Remove NTP
