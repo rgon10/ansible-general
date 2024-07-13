@@ -1,0 +1,23 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Include OS specific vars
+      ansible.builtin.include_vars:
+        file: "{{ item }}"
+      with_first_found:
+        - "{{ ansible_facts['os_family'] | lower }}-{{ ansible_facts['distribution_major_version'] | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}.yml"
+
+    - name: Validate restrict config
+      ansible.builtin.lineinfile:
+        path: "{{ __ntp_config_file }}"
+        line: "restrict 10.10.10.10 nomodify nopeer limited"
+      check_mode: true
+      register: restrict_line
+
+    - name: Restrict config is correct
+      ansible.builtin.assert:
+        that:
+          - not restrict_line.changed
