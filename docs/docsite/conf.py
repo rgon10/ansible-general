@@ -8,19 +8,20 @@
 # documentation:
 # http://www.sphinx-doc.org/en/master/config
 
-project = 'Ansible collections'
-copyright = 'Ansible contributors'
+project = "rgon10.general collection"
+copyright = "rgon10.general contributors"
 
-title = 'Ansible Collections Documentation'
-html_short_title = 'Ansible Collections Documentation'
+title = "rgon10.general Collection Documentation"
+html_short_title = "rgon10.general Collection Docs"
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx_antsibull_ext']
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.intersphinx", "sphinx_antsibull_ext"]
+antsibull_ext_color_scheme = "default-dark"
 
-pygments_style = 'ansible'
+pygments_style = "ansible"
 
-highlight_language = 'YAML+Jinja'
+highlight_language = "YAML+Jinja"
 
-html_theme = 'sphinx_ansible_theme'
+html_theme = "sphinx_ansible_theme"
 html_show_sphinx = False
 
 display_version = False
@@ -32,14 +33,17 @@ html_copy_source = False
 
 # See https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_mapping for the syntax
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/2/', (None, '../python2.inv')),
-    'python3': ('https://docs.python.org/3/', (None, '../python3.inv')),
-    'jinja2': ('http://jinja.palletsprojects.com/', (None, '../jinja2.inv')),
-    'ansible_devel': ('https://docs.ansible.com/ansible/devel/', (None, '../ansible_devel.inv')),
+    "python": ("https://docs.python.org/2/", (None, "../python2.inv")),
+    "python3": ("https://docs.python.org/3/", (None, "../python3.inv")),
+    "jinja2": ("http://jinja.palletsprojects.com/", (None, "../jinja2.inv")),
+    "ansible_devel": (
+        "https://docs.ansible.com/ansible/devel/",
+        (None, "../ansible_devel.inv"),
+    ),
     # If you want references to resolve to a released Ansible version (say, `5`), uncomment and replace X by this version:
     # 'ansibleX': ('https://docs.ansible.com/ansible/X/', (None, '../ansibleX.inv')),
 }
 
-default_role = 'any'
+default_role = "any"
 
 nitpicky = True
