@@ -2,6 +2,8 @@
 argument_specs:
   main:
     short_description: Install and Configure NTP on Linux
+    description:
+      - Installs and configures NTP on Linux. At this time, only Debian is supported.
     author:
       - rgon10
     options:
@@ -57,7 +59,8 @@ argument_specs:
         description: Override the default NTP servers.
       ntp_tz_package:
         type: str
-        default:
+        default: OS Dependent
+        description:
           - Name of the NTP package to install. The default should be sane for your OS.
           - "Debian: defaults to tzdata."
     version_added: 1.0.0

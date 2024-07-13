@@ -3,6 +3,8 @@ name: Validate Collection
 "on":
   pull_request:
   push:
+    paths-ignore:
+      - "docs/**"
 
 defaults:
   run:
