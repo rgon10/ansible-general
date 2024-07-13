@@ -1,0 +1,17 @@
+---
+ntp_config: true
+ntp_enabled: true
+ntp_tz: Etc/UTC
+
+# Empty defaults to worldwide. Confiuguration to get closer to your area, but it should
+# default to an area close to your server.
+# See ntp.org's documentation: http://support.ntp.org/bin/view/Servers/NTPPoolServers
+
+ntp_region: ""
+ntp_servers:
+  - "0{{ '.' + ntp_region if ntp_region else '' }}.pool.ntp.org iburst"
+  - "1{{ '.' + ntp_region if ntp_region else '' }}.pool.ntp.org iburst"
+  - "2{{ '.' + ntp_region if ntp_region else '' }}.pool.ntp.org iburst"
+  - "3{{ '.' + ntp_region if ntp_region else '' }}.pool.ntp.org iburst"
+
+ntp_clients: []

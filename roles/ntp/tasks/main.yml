@@ -1,0 +1,70 @@
+---
+- name: Include OS variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_facts['os_family'] | lower }}-{{ ansible_facts['distribution_major_version'] | lower }}.yml"
+    - "{{ ansible_facts['os_family'] | lower }}.yml"
+
+# this is from my first role attempt - need to determine if it's still needed
+# - name: Remove NTP
+#   ansible.builtin.apt:
+#     name: ntp
+#     state: absent
+
+- name: Update Package Cache
+  ansible.builtin.include_tasks:
+    file: "update-cache-{{ ansible_pkg_mgr }}.yml"
+
+- name: Install NTP
+  ansible.builtin.package:
+    name: "{{ ntp_package | default(__ntp_package) }}"
+    state: present
+
+- name: Install TZData Package
+  ansible.builtin.package:
+    name: "{{ ntp_tz_package | default(__ntp_tz_package) }}"
+    state: present
+  when: ansible_system == "Linux"
+
+- name: Set Timezone
+  community.general.timezone:
+    name: "{{ ntp_tz }}"
+  notify:
+    - Restart cron
+    - Restart rsyslog
+
+- name: Get service facts
+  ansible.builtin.service_facts:
+
+- name: Disable systemd-timesyncd if it's running but ntp is enabled.
+  ansible.builtin.service:
+    name: systemd-timesyncd.service
+    enabled: false
+    state: stopped
+  when:
+    - ntp_enabled
+    - '"systemd-timesyncd.service" in services'
+    - services["systemd-timesyncd.service"]["status"] != "not-found"
+
+- name: Ensure NTP daemon is desired state
+  ansible.builtin.service:
+    name: "{{ ntp_daemon | default(__ntp_daemon) }}"
+    state: "{{ 'started' if ntp_enabled else 'stopped' }}"
+    enabled: "{{ ntp_enabled }}"
+  ignore_errors: "{{ ansible_check_mode }}"
+
+# - name: Ensure NTP daemon is stopped and disabled
+#   ansible.builtin.service:
+#     name: "{{ ntp_daemon | default(__ntp_daemon) }}"
+#     state: stopped
+#     enabled: false
+#   when: not ntp_enabled | bool
+#   ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Configure NTP
+  ansible.builtin.template:
+    src: "{{ ntp_config_file | default(__ntp_config_file) | basename }}.j2"
+    dest: "{{ ntp_config_file | default(__ntp_config_file) }}"
+    mode: "0644"
+  notify: Restart NTP
+  when: ntp_config

@@ -1,0 +1,14 @@
+---
+exclude_paths:
+  - extensions/
+  - changelogs/
+  - argument_specs.yml
+
+warn_list:
+  - no-handler
+  - no-changed-when
+
+kinds:
+  - playbook: ./playbooks/**/*.yml
+# skip_list:
+#   - yaml

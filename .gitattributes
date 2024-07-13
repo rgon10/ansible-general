@@ -1,0 +1,9 @@
+# Set text to automatically be parsed
+* text=auto
+
+# .yml files should use native line endings
+*.yml=text
+
+# files need to be linux based
+*/files/* text eol=lf
+*.conf text eol=lf

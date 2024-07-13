@@ -1,0 +1,65 @@
+---
+argument_specs:
+  main:
+    short_description: Install and Configure NTP on Linux
+    author:
+      - rgon10
+    options:
+      ntp_package:
+        type: str
+        required: false
+        default: OS Dependent
+        description:
+          - Name of the NTP package to install. The default should be sane for your OS.
+          - "Debian: defaults to ntpsec on versions >= 12. Defaults to ntp on versions <= 11."
+      ntp_config_file:
+        type: str
+        required: false
+        default: OS Dependent
+        description:
+          - Path to the configuration file for the ntp package. The default should be sane for your OS.
+          - "Debian: defaults to /etc/ntpsec/ntp.conf on versions >= 12. Defaults to /etc/ntp.conf on version <= 11"
+      ntp_drift_file:
+        type: str
+        default: OS Dependent
+        description:
+          - Path to the drift file for the ntp package. The default should be sane for your OS.
+          - "Debian: defaults to /var/lib/ntpsec/ntp.drift on versions >= 12. Defaults to /var/lib/ntp/drift on version <= 11"
+      ntp_enabled:
+        type: bool
+        default: false
+        description: Control if the ntp service should be running and enabled for auto start.
+      ntp_config:
+        type: bool
+        default: true
+        description: Controls if the ntp config is managed by ansible.
+      ntp_tz:
+        type: str
+        default: Etc/UTC
+        description: Configure the timezone for the system
+      ntp_region:
+        type: str
+        default: ""
+        description: Set the area for the NTP pool. See ntp.org's documentation - http://support.ntp.org/bin/view/Servers/NTPPoolServers
+      ntp_clients:
+        type: list
+        required_if:
+          - [ntp_server_role, option_value, true]
+        default: []
+        elements: str
+        description: List of CIDR subnets or IP addresses to provide NTP services to.
+      ntp_servers:
+        type: list
+        elements: str
+        default:
+          - 0<.ntp_region>.pool.ntp.org
+          - 1<.ntp_region>.pool.ntp.org
+          - 2<.ntp_region>.pool.ntp.org
+          - 3<.ntp_region>.pool.ntp.org
+        description: Override the default NTP servers.
+      ntp_tz_package:
+        type: str
+        default:
+          - Name of the NTP package to install. The default should be sane for your OS.
+          - "Debian: defaults to tzdata."
+    version_added: 1.0.0
