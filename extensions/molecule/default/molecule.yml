@@ -5,11 +5,7 @@ platforms:
   - name: debian11
     image: debian:bullseye
     pre_build_image: false
-    systemd_entrypoint: true
-    #pull: true
 
   - name: debian12
     image: debian:bookworm
     pre_build_image: false
-    systemd_entrypoint: true
-    #pull: true

@@ -1,0 +1,7 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ${MOLECULE_DISTRO}
+    pre_build_image: false
