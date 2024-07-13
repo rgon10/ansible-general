@@ -65,5 +65,5 @@ jobs:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
           MOLECULE_DISTRO: ${{ matrix.distro.image }}
-          MOLECULE_NAME: ${{ matric.distro.name }}
+          MOLECULE_NAME: ${{ matrix.distro.name }}
         working-directory: ".ansible/collections/ansible_collections/rgon10/general/extensions"
