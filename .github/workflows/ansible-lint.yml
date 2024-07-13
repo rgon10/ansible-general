@@ -1,0 +1,14 @@
+---
+name: CI
+"on":
+  pull_request:
+  push:
+
+jobs:
+  lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - name: Run Ansible-Lint
+        uses: ansible/ansible-lint@main
