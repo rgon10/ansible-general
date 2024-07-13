@@ -1,18 +1,22 @@
 ---
-name: Molecule Testing
+name: Validate Collection
 "on":
   pull_request:
   push:
-    branches:
-      - main
-      - devel
-      - setup
 
 defaults:
   run:
     working-directory: ".ansible/collections/ansible_collections/rgon10/general"
 
 jobs:
+  lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - name: Run Ansible-Lint
+        uses: ansible/ansible-lint@main
+
   molecule:
     name: Molecule
     runs-on: ubuntu-latest
