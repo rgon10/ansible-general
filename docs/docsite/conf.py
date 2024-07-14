@@ -14,8 +14,12 @@ copyright = "rgon10.general contributors"
 title = "rgon10.general Collection Documentation"
 html_short_title = "rgon10.general Collection Docs"
 
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.intersphinx", "sphinx_antsibull_ext"]
-antsibull_ext_color_scheme = "default-dark"
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "notfound.extension",
+    "sphinx_antsibull_ext",
+]
 
 pygments_style = "ansible"
 
@@ -27,7 +31,7 @@ html_show_sphinx = False
 display_version = False
 
 html_use_smartypants = True
-html_use_modindex = False
+html_use_modindex = True
 html_use_index = False
 html_copy_source = False
 
