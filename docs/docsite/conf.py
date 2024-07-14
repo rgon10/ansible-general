@@ -17,7 +17,6 @@ html_short_title = "rgon10.general Collection Docs"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
-    "notfound.extension",
     "sphinx_antsibull_ext",
 ]
 
