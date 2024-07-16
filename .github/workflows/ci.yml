@@ -33,7 +33,7 @@ jobs:
         run: |
           matrixArray=$(find ./extensions/molecule/ -mindepth 1 -maxdepth 1 -type d )
           matrixArray=$(echo $matrixArray | sed -e "s/\.\/extensions\/molecule\///g" | sed -e "s/\s/,/g")
-          matrixArray="[$matrixArray]"
+          matrixArray="{[$matrixArray]}"
           echo "scenarios=$matrixArray >> $GITHUB_OUTPUT"
           echo "scenarios=$matrixArray"
 
