@@ -19,6 +19,23 @@ jobs:
       - name: Run Ansible-Lint
         uses: ansible/ansible-lint@main
 
+  get-scenarios:
+    name: Get Scenarios
+    runs-on: ubuntu-latest
+    outputs:
+      scenarios: ${{ steps.set-scenarios.outputs.scenarios }}
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v4
+        with:
+          path: ".ansible/collections/ansible_collections/rgon10/general"
+      - id: set-scenarios
+        run: |
+          matrixArray=$(find ./extensions/molecule/ -mindepth 1 -maxdepth 1 -type d )
+          matrixArray=$(echo $matrixArray | sed -e "s/\.\/extensions\/molecule\///g" | sed -e "s/\s/,/g")
+          matrixArray="[$matrixArray]"
+          echo "::set-output name=scenarios::$matrixArray"
+
   molecule:
     name: Molecule
     runs-on: ubuntu-latest
@@ -29,6 +46,7 @@ jobs:
             image: debian:bookworm
           - name: debian11
             image: debian:bullseye
+        scenario: ${{ fromJson(needs.get-scenarios.outputs.scenarios) }}
 
     steps:
       - name: Check out the codebase
@@ -45,7 +63,7 @@ jobs:
         run: pip3 install ansible molecule molecule-plugins[docker] docker
 
       - name: Run Molecule tests
-        run: molecule test --all
+        run: molecule test --senario-name ${{ matrix.scenario }}
         env:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
