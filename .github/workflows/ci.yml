@@ -39,6 +39,7 @@ jobs:
   molecule:
     name: Molecule
     runs-on: ubuntu-latest
+    needs: get-scenarios
     strategy:
       matrix:
         distro:
