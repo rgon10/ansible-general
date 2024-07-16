@@ -1,0 +1,4 @@
+---
+__ntp_config_file: /etc/ntpsec/ntp.conf
+__ntp_drift_file: /var/lib/ntpsec/ntp.drift
+__ntp_daemon: ntpsec

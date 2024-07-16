@@ -9,11 +9,8 @@
     - "{{ __os_family }}-{{ '12+' if ((ansible_facts['distribution_major_version'] | int ) >= 12 ) }}.yml"
     - "{{ __os_family }}.yml"
 
-# this is from my first role attempt - need to determine if it's still needed
-# - name: Remove NTP
-#   ansible.builtin.apt:
-#     name: ntp
-#     state: absent
+- name: Include Package Variables
+  ansible.builtin.include_vars: "{{ ntp_package | default(__ntp_package) }}.yml"
 
 - name: Update Package Cache
   ansible.builtin.include_tasks:
@@ -40,7 +37,7 @@
 - name: Get service facts
   ansible.builtin.service_facts:
 
-- name: Disable systemd-timesyncd if it's running but ntp is enabled.
+- name: Disable systemd-timesyncd
   ansible.builtin.service:
     name: systemd-timesyncd.service
     enabled: false
@@ -56,14 +53,6 @@
     state: "{{ 'started' if ntp_enabled else 'stopped' }}"
     enabled: "{{ ntp_enabled }}"
   ignore_errors: "{{ ansible_check_mode }}"
-
-# - name: Ensure NTP daemon is stopped and disabled
-#   ansible.builtin.service:
-#     name: "{{ ntp_daemon | default(__ntp_daemon) }}"
-#     state: stopped
-#     enabled: false
-#   when: not ntp_enabled | bool
-#   ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Configure NTP
   ansible.builtin.template:
