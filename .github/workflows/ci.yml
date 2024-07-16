@@ -5,6 +5,7 @@ name: Validate Collection
   push:
     paths-ignore:
       - "docs/**"
+      - ".github/workflows/doc-push.yml"
 
 defaults:
   run:
